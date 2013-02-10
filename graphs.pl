@@ -1,6 +1,6 @@
 :- dynamic edge_/2.
 :- dynamic vertex_/1.
-%create backup system for graphs so if invalid one entered old one is restored
+% consider creating backup system for graphs so if invalid one entered old one is restored
 setGraph(Vertices,Edges) :-
 	setVertices(Vertices),
 	setEdges(Edges).
