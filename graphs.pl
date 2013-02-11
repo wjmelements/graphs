@@ -28,7 +28,6 @@ setEdges([[X,Y]|Others]) :-
 	vertex_(Y),
 	setEdges(Others),
 	asserta(edge_(X,Y)).
-edge(X,X).
 edge(X,Y) :- edge_(X,Y).
 edge(X,Y) :- edge_(Y,X).
 edges(X,[Y|List]) :-
@@ -51,7 +50,7 @@ size(Size) :-
 complement(Vertices,Edges) :-
 	var(Vertices),
 	findall(Vertex,vertex(Vertex),Vertices),
-	findall([A,B],(member(A,Vertices),member(B,Vertices),not(edge(A,B))),Edges).
+	findall([A,B],(member(A,Vertices),member(B,Vertices),not(edge(A,B)),A\==B),Edges).
 complement(Vertices,Edges) :-
 	nonvar(Vertices),
-	findall([A,B],(member(A,Vertices),member(B,Vertices),not(edge(A,B))),Edges).
+	findall([A,B],(member(A,Vertices),member(B,Vertices),not(edge(A,B)),A\==B),Edges).
